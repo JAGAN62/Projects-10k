@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bending Text Effect</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            perspective: 1000px; /* Add perspective for 3D effect */
+        }
+        .bending-text {
+            font-size: 50px;
+            transition: transform 0.1s; /* Smooth transition */
+        }
+    </style>
+</head>
+<body>
+    <div class="bending-text">Bend This Text!</div>
+
+    <script>
+        const bendingText = document.querySelector('.bending-text');
+
+        document.addEventListener('mousemove', (event) => {
+            const x = event.pageX;
+            const y = event.pageY;
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight / 2;
+
+            // Calculate the angle for bending
+            const angleX = (y - centerY) * 0.1; // Vertical bending
+            const angleY = (centerX - x) * 0.1; // Horizontal bending
+
+            bendingText.style.transform = `rotateY(${angleY}deg) rotateX(${angleX}deg)`;
+        });
+    </script>
+</body>
+</html>
